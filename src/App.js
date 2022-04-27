@@ -1,16 +1,36 @@
 import React from 'react'
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCard } from './components/ListOfPhotoCard'
-import { Logo } from './components/Logo'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider
+} from '@apollo/client'
+import { BrowserRouter } from 'react-router-dom'
+// styles
 import { GlobalStyle } from './styles/GlobalStyles'
+// components
+import { Logo } from './components/Logo'
+// config
+import { GRAPH_ENDPOINT } from './constants/api'
+import { Navbar } from './components/Navbar'
+import { AppRouter } from './Router'
+
+const client = new ApolloClient({
+  uri: GRAPH_ENDPOINT,
+  cache: new InMemoryCache()
+})
 
 export default function App () {
+  const ulrParmas = new window.URLSearchParams(window.location.search)
+  const detailId = ulrParmas.get('detail')
+  console.log(detailId)
   return (
-    <>
-      <GlobalStyle />
-      <Logo />
-      <ListOfCategories />
-      <ListOfPhotoCard />
-    </>
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <Logo />
+        <AppRouter />
+        <Navbar />
+      </ApolloProvider>
+    </BrowserRouter>
   )
 }
