@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
 
-const CategoryItem = styled.a`
+const CategoryItem = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;

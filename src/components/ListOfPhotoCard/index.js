@@ -1,10 +1,10 @@
 import React from 'react'
-import { PhotoCard } from '../photocard'
+import { PhotoCard } from '../Photocard'
 
-function ListOfPhotoCard () {
+function ListOfPhotoCard ({ photos }) {
   return (
     <div>
-      {[1, 2, 3, 5, 6, 7, 8, 9, 10, 11].map(card => <PhotoCard key={card} />)}
+      {photos.map(card => <PhotoCard key={card.id} {...card} />)}
     </div>
   )
 }

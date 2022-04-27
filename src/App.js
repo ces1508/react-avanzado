@@ -20,9 +20,6 @@ const client = new ApolloClient({
 })
 
 export default function App () {
-  const ulrParmas = new window.URLSearchParams(window.location.search)
-  const detailId = ulrParmas.get('detail')
-  console.log(detailId)
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>

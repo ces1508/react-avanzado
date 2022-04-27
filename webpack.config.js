@@ -27,11 +27,16 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      Styles: path.resolve(__dirname, 'styles/'),
-      Components: path.resolve(__dirname, 'src/components'),
-      Constants: path.resolve(__dirname, 'constants/')
+  devServer: {
+    historyApiFallback: {
+      disableDotRule: true
     }
   }
+  // resolve: {
+  //   alias: {
+  //     Styles: path.resolve(__dirname, 'styles/'),
+  //     Components: path.resolve(__dirname, 'src/components'),
+  //     Constants: path.resolve(__dirname, 'constants/')
+  //   }
+  // }
 }

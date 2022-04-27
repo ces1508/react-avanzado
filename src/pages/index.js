@@ -1,0 +1,6 @@
+export { HomePage } from './Home'
+export { DetailPage } from './Detail'
+export { CategoryPhotosPage } from './CategoryPhotos'
+export { FavsPage } from './Favs'
+export { LoginRegisterPage } from './LoginRegister'
+export { UserPage } from './User'
