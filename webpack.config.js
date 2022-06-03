@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-console.log(path.resolve(__dirname, 'styles/'))
+console.log(path.resolve(__dirname, 'src/styles/'))
 module.exports = {
   output: {
     filename: 'app.bundle.js'
@@ -31,12 +31,17 @@ module.exports = {
     historyApiFallback: {
       disableDotRule: true
     }
+  },
+  resolve: {
+    alias: {
+      '@styles': path.resolve(__dirname, 'src/styles/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@constants': path.resolve(__dirname, 'src/constants/'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@mutations': path.resolve(__dirname, 'src/mutations/'),
+      '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@containers': path.resolve(__dirname, 'src/containers/'),
+      '@hooks': path.resolve(__dirname, 'src/hooks/')
+    }
   }
-  // resolve: {
-  //   alias: {
-  //     Styles: path.resolve(__dirname, 'styles/'),
-  //     Components: path.resolve(__dirname, 'src/components'),
-  //     Constants: path.resolve(__dirname, 'constants/')
-  //   }
-  // }
 }

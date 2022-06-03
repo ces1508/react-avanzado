@@ -6,12 +6,12 @@ import {
 } from '@apollo/client'
 import { BrowserRouter } from 'react-router-dom'
 // styles
-import { GlobalStyle } from './styles/GlobalStyles'
+import { GlobalStyle } from '@styles/GlobalStyles'
 // components
-import { Logo } from './components/Logo'
+import { Logo } from '@components/Logo'
+import { Navbar } from '@components/Navbar'
 // config
-import { GRAPH_ENDPOINT } from './constants/api'
-import { Navbar } from './components/Navbar'
+import { GRAPH_ENDPOINT } from '@constants/api'
 import { AppRouter } from './Router'
 
 const client = new ApolloClient({

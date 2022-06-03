@@ -1,42 +1,48 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { AuthContext, AuthContextProvider } from '@context/auth'
 import {
   HomePage,
   DetailPage,
   CategoryPhotosPage,
   FavsPage,
-  LoginRegisterPage,
-  UserPage
-} from '../pages'
-
-const isLogged = false
+  LoginPage,
+  UserPage,
+  RegisterPage
+} from '@pages'
 
 const RequireAuth = ({ children }) => {
-  if (isLogged) return children
-  return <LoginRegisterPage />
+  const { state } = useContext(AuthContext)
+  if (state.isAuth) return children
+  return <LoginPage />
 }
 
 const AppRouter = () => {
   return (
-    <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/:id' element={<DetailPage />} />
-      <Route path='/category/:categoryId' element={<CategoryPhotosPage />} />
-      <Route
-        path='/favs' element={
-          <RequireAuth>
-            <FavsPage />
-          </RequireAuth>
+    <AuthContextProvider>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/:id' element={<DetailPage />} />
+        <Route path='/category/:categoryId' element={<CategoryPhotosPage />} />
+        <Route
+          path='/favs' element={
+            <RequireAuth>
+              <FavsPage />
+            </RequireAuth>
       }
-      />
-      <Route
-        path='/user' element={
-          <RequireAuth>
-            <UserPage />
-          </RequireAuth>
+        />
+        <Route
+          path='/user' element={
+            <RequireAuth>
+              <UserPage />
+            </RequireAuth>
       }
-      />
-    </Routes>
+        />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<LoginPage />} />
+      </Routes>
+
+    </AuthContextProvider>
 
   )
 }
